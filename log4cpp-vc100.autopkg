@@ -1,0 +1,45 @@
+nuget {
+    nuspec {
+        id = log4cpp-vc100;
+        version : 1.1.0.3;
+        title : Log4Cpp a C++ logging framework;
+        authors : {many};
+        owners : {ksmyth};
+        licenseUrl : "http://www.gnu.org/licenses/lgpl.html";
+        projectUrl: "http://log4cpp.sourceforge.net/";
+        iconUrl: "http://logging.apache.org/log4j/2.x/images/logo.jpg";
+        requireLicenseAcceptance:false;
+        summary: Log4cpp vc100 libraries;
+
+        description: @"Log4cpp is library of C++ classes for flexible logging to files, syslog, 
+            IDSA and other destinations. It is modeled after the Log4j Java library, 
+            staying as close to their API as is reasonable.";
+        releaseNotes: "Release of log4Cpp 1.1";
+        copyright: Copyright 2013;
+        tags: { native, logging, cpp };
+    }
+    dependencies {
+        packages : {
+            log4cpp/1.1.0.3,
+        }
+    };
+
+    files {
+        vcpdb += {
+            // #flatten = true;
+            #destination = ${d_lib};
+        };
+
+        [x64,v100,debug] { 
+            lib: msvc10\x64\Debug\log4cppD.lib;
+            vcpdb: msvc10\log4cppLIB\x64\Debug\vc100.pdb;
+            bin: msvc10\x64\Debug\NTEventLogAppender.dll;
+        }
+
+        [x64,v100,release] { 
+            lib: msvc10\x64\Release\log4cppLIB.lib;
+            vcpdb: msvc10\log4cppLIB\x64\Release\vc100.pdb;
+            bin: msvc10\x64\Release\NTEventLogAppender.dll;
+        }
+    }
+}

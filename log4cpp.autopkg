@@ -1,0 +1,35 @@
+nuget {
+    nuspec {
+        id = log4cpp;
+        version : 1.1.0.3;
+        title : Log4Cpp a C++ logging framework;
+        authors : {many};
+        owners : {ksmyth};
+        licenseUrl : "http://www.gnu.org/licenses/lgpl.html";
+        projectUrl: "http://log4cpp.sourceforge.net/";
+        iconUrl: "http://logging.apache.org/log4j/2.x/images/logo.jpg";
+        requireLicenseAcceptance:false;
+        summary: Log4cpp is library of C++ classes for flexible logging;
+
+        description: @"Log4cpp is library of C++ classes for flexible logging to files, syslog, 
+            IDSA and other destinations. It is modeled after the Log4j Java library, 
+            staying as close to their API as is reasonable.";
+            releaseNotes: "Release of log4Cpp 1.1";
+        copyright: Copyright 2013;
+        tags: { native, logging, cpp };
+    }
+
+    files {
+        nestedInclude : { 
+            #destination = ${d_include}log4cpp;
+            "include\**\*.hh",
+            "include\**\*.h"
+        };
+
+        docs : { };
+    }
+
+    targets {
+        Defines += HAS_LOG4CPP;
+    }
+}
